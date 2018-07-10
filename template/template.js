@@ -22,11 +22,13 @@ Template.simpleSelectize.helpers({
         // clear current options:
         selectize.clearOptions();
         // add new options:
-        template.data.selectOptions.map(option => selectize.addOption(option));
-        // if previously selected options, set it as selected again:
-        if (selectedOption) {
-          selectize.addOption(selectedOption);
-          selectize.setValue(selectedOption._id);
+        if (template.data.selectOptions && template.data.selectOptions.length) {
+          template.data.selectOptions.map(option => selectize.addOption(option));
+          // if previously selected options, set it as selected again:
+          if (selectedOption) {
+            selectize.addOption(selectedOption);
+            selectize.setValue(selectedOption._id);
+          }
         }
       }
     }
