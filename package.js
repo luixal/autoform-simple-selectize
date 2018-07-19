@@ -1,6 +1,6 @@
 Package.describe({
   name: 'luixal:autoform-simple-selectize',
-  version: '0.0.3',
+  version: '0.0.4',
   // Brief, one-line summary of the package.
   summary: 'Selectize packaged ait it simplest form AutoForm',
   // URL to the Git repository containing the source code for this package.

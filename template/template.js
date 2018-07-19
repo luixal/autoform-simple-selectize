@@ -27,7 +27,8 @@ Template.simpleSelectize.helpers({
           // if previously selected options, set it as selected again:
           if (selectedOption) {
             selectize.addOption(selectedOption);
-            selectize.setValue(selectedOption._id);
+            let valueField = (template.data.selectizeOptions && template.data.selectizeOptions.valueField) ? template.data.selectizeOptions.valueField : 'value';
+            selectize.setValue(selectedOption[valueField]);
           }
         }
       }
