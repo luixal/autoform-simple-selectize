@@ -8,7 +8,21 @@ Template.simpleSelectize.onRendered(function() {
   // creating selectize:
   _self.selectize = $('#' + elementId).selectize(_.extend(selectizeOptions, options));
   // setting default value if provided:
-  if (_self.data.value) $('#' + elementId)[0].selectize.setValue(_self.data.value);
+  if (_self.data.value) {
+    let selectize = $('#' + elementId)[0].selectize;
+    // if items, but no options, add those items as options and add items:
+    if (_.isArray(_self.data.value) && !_.isObject(_self.data.value[0]) && !options.options) {
+      _self.data.value.map(
+        value => {
+          selectize.addOption({value: value, text: value});
+          selectize.addItem(value);
+        }
+      );
+    // else, just set values:
+    } else {
+      selectize.setValue(_self.data.value)
+    }
+  };
 });
 
 Template.simpleSelectize.helpers({
